@@ -1,0 +1,11 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ${DOCKER_CONTAINER_NAME}.env
+  annotations: {}
+  labels: {}
+  namespace: ${NAMESPACE}
+data:
+  APP_ENV: $APP_ENV
+
+  # TOKEN_KEY: $TOKEN_KEY

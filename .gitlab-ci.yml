@@ -1,0 +1,45 @@
+include:
+  - project: 'dti/agd/templates/ci-templates-javascript'
+    ref: master
+    file: 'express.yml'
+
+variables:
+  NODE_VERSION: "18"
+  DOCKER_IMAGE_NAME: "wtpc-frontend"
+  K8S_APP_NAME: "wtpc-frontend"
+  K8S_DISABLE_HEALTHCHECK: "true"
+  K8S_DISABLE_METRICS: "true"
+
+deploy:qa:
+  variables:
+    K8S_NAMESPACE: "dev-wtpc-sim"
+    APP_ENV: "qa"
+
+
+# include:
+#   - project: 'devops/templates/javascript-ci-templates'
+#     ref: k8s
+#     file: 'react-app-node20.yml'
+
+# variables:
+#   NEEDS_DEV: "false"
+#   USE_OLD_SONAR: "false"
+#   SONAR_QUALITY_GATE: "false"
+#   DOCKER_HOST_PORT: "3000"
+#   DOCKER_CONTAINER_PORT: "3000"
+#   AUTOMATIC_DEPLOYMENT_ON_DEV: "false"
+#   AUTOMATIC_DEPLOYMENT_ON_QA: "true"
+#   DOCKER_IMAGE_NAME: wtpc-frontend
+#   DOCKER_CONTAINER_NAME: wtpc-frontend
+#   PRE_PROD_TEST: "false"
+
+# deploy:qa:
+#   variables:
+#    APP_ENV: "qa"
+#    NAMESPACE: "dev-wtpc-sim"
+#    K8S_CPU_REQ: 100m
+#    K8S_CPU_LIM: 120m
+#    K8S_MEM_REQ: 200Mi
+#    K8S_MEM_LIM: 300Mi
+#   tags:
+#     - docker
